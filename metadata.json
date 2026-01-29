@@ -1,0 +1,7 @@
+{
+  "name": "Insaaf Zarai Markaz - Stock Manager",
+  "description": "A specialized inventory and sales management system for Insaaf Zarai Markaz, a pesticide and agriculture shop in Pakistan, featuring AI-powered crop advice and stock analysis.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
