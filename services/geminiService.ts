@@ -1,11 +1,15 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from "@google/genai";
 
-export function getGeminiClient() {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-  if (!apiKey) {
-    throw new Error('Gemini API key missing');
-  }
+if (!apiKey) {
+  throw new Error("Gemini API key is missing");
+}
 
-  return new GoogleGenerativeAI(apiKey);
+const genAI = new GoogleGenAI({ apiKey });
+
+export async function askGemini(prompt: string): Promise<string> {
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const result = await model.generateContent(prompt);
+  return result.response.text();
 }
